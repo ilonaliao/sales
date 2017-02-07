@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "desc": "超業Talk秀，為您邀請各行的超級業務面對面無私分享成功關鍵、銷售技巧，利用下班後一小時充電，立即報名，開啟你的超級業務之路！",
+    "keywords": "業務、高薪、轉職、工作、職缺、超級業務、銷售技巧、電銷、金融理專、top sales、超業故事、成功、年薪百萬、國內業務、業務成功案例、職涯、104調查、薪資統計、薪資調查"
+  },
+  "lactures": [
+    {
+      "dateY": "2017",
+      "dateM": "03",
+      "dateD": "10",
+      "day": "FRIDAY",
+      "title": "業績女王的告白！",
+      "desc": "TutorABC業績女王－Lydia，76年次年薪三百萬，戲曲學校畢業，她將分享如何越挫越勇找到方法聽出客戶需求，持續穩定成交，及女生如何找到安全又能賺錢的業務工作",
+      "presenter": "TutorABC－Lydia",
+      "timeStart": "19:30",
+      "timeEnd": "20:30",
+      "location": "104 人力銀行-新店總部 (新北市新店區寶中路119號3樓)",
+      "limit": "限量席次，審核通過後 email 通知，不接受現場報名",
+      "url": "http://www.104.com.tw/jb/service/ad/TransferAddress?trnid=adn_34661",
+      "imgSrc": "show-lactures1.jpg"
+    },
+    {
+      "dateY": "2017",
+      "dateM": "03",
+      "dateD": "14",
+      "day": "Thursday",
+      "title": "跟著電銷王牌複製成功DNA！",
+      "desc": "在電銷領域中，想成交，靠的不是花俏的說話技巧，而是『複製』這些好習慣？！讓康健人壽的王牌業務『周家煌』親自教授最私房的成交秘技！歡迎對業務工作有興趣的朋友報名參加！",
+      "presenter": "康健人壽－周家煌 主任",
+      "timeStart": "19:30",
+      "timeEnd": "20:30",
+      "location": "104 人力銀行-新店總部 (新北市新店區寶中路119號3樓)",
+      "limit": "限量席次，審核通過後 email 通知，不接受現場報名",
+      "url": " http://www.104.com.tw/jb/service/ad/TransferAddress?trnid=adn_34659",
+      "imgSrc": "show-lactures2.jpg"
+    }
+  ]
+}

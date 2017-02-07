@@ -1,0 +1,81 @@
+{% extends '_base.twig' %}
+
+{% block title %}跟著前輩這樣做-104超級業務{% endblock %}
+{% block ogTitle %}跟著前輩這樣做-104超級業務{% endblock %}
+{% block desc %}{{json.meta.desc}}{% endblock %}
+{% block ogDesc %}{{json.meta.desc}}{% endblock %}
+{% block keywords %}{{json.meta.keywords}}{% endblock %}
+{% block containerId %}article{% endblock %}
+
+{% block main %}
+    <main class="main">
+        <div class="page-tt"><img src="{{STATIC_WEB_PATH}}/img/static/article/tt.jpg" alt="前輩帶路"></div>
+        <h1 class="tt">{{json.main.title}}</h1>
+        <div class="fb-share-button" data-href="{{uri}}" data-layout="button" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{uri}}&amp;src=sdkpreparse">分享</a></div>
+        <time>{{json.main.date}}</time>
+
+        <img class="kv" src="{{STATIC_WEB_PATH}}/img/upload/{{json.main.imgSrc}}" alt="">
+        <h2 class="tips">{{json.main.summary}}</h2>
+        {% for ck,cv in  json.main.con %}
+        <section>
+          <h3>{{cv.title}}</h3>
+          <p>{{cv.desc}}</p>
+          {% if cv.qoute is not null %}
+            <div class="attach">
+              <blockquote>{{cv.qoute}}</blockquote>
+            </div>
+          {% endif %}
+          {% if cv.imgSrc is not null %}
+          <div class="attach">
+            <img class="pic" src="{{STATIC_WEB_PATH}}/img/upload/{{cv.imgSrc}}" alt="">
+          </div>
+          {% endif %}
+        </section>
+        {% endfor %}
+
+        <address class="presenter">
+          <img src="{{STATIC_WEB_PATH}}/img/upload/{{json.presenter.imgSrc}}" alt="">
+          <h3>{{json.presenter.name}}</h3>
+          <div class="info">
+            <dl>
+              <dt>現職：</dt>
+              <dd>{{json.presenter.title}}</dd>
+            </dl>
+
+            {% if json.presenter.exp|length > 0 %}
+            <dl>
+                <dt>經歷：</dt>
+                <dd>
+                  <ol>
+                    {% for ek,ev in json.presenter.exp %}
+                      <li>{{ev}}</li>
+                    {% endfor %}
+                  </ol>
+                </dd>
+            </dl>
+            {% endif %}
+            {% if json.presenter.edu|length > 0 %}
+            <dl>
+              <dt>學歷：</dt>
+              <dd>
+                <ol>
+                  {% for eek,eev in json.presenter.edu %}
+                      <li>{{eev}}</li>
+                  {% endfor %}
+                </ol>
+              </dd>
+            </dl>
+            {% endif %}
+            <dl>
+              <dt>年資：</dt>
+              <dd>{{json.presenter.years}}</dd>
+            </dl>
+          </div>
+        </address>
+        <div class="action">
+          <a class="button more bl" href="/supersales/follow">更多充電好文</a>
+          <a class="button jobs yw" href="{{json.bottom.jobs}}">跟著前輩去上班</a>
+          <a class="button acps bk" href="{{json.bottom.activity}}" target="_blank">超業前輩親自傳授</a>
+        </div>
+      </main>
+{% endblock %}

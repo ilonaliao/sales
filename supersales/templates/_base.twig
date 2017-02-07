@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>     <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>        <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>        <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--><html lang="zh-tw"><!--<![endif]-->
+<html lang="zh-tw">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}104－超級業務專區{% endblock %}</title>
+  <meta name="description" content="{% block desc %}{% endblock %}" />
+  <meta name="keywords" content="{% block keywords %}業務、高薪、轉職、工作、職缺、超級業務、銷售技巧、電銷、金融理專、top sales、超業故事、成功、年薪百萬、國內業務、業務成功案例、職涯、104調查、薪資統計、薪資調查{% endblock %}" />
+  <meta property="og:title" content="{% block ogTitle %}104－超級業務專區{% endblock %}"/>
+  <meta property="og:description" content="{% block ogDesc %}{% endblock %}" />
+  <meta property="og:image" content="{% block ogImage %}{{STATIC_WEB_PATH}}/img/upload/fb_banner.jpg{% endblock %}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{uri}}" />
+  <!--[if lt IE 9]>
+    <script src="//static.104.com.tw/104main/js/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" type="text/css" href="{{STATIC_WEB_PATH}}/css/stylesheet.css?v={{STATIC_VERSION}}">
+  <link rel="stylesheet" type="text/css" href="//static.104.com.tw/bubble/css/alert.css?v={{STATIC_VERSION}}">
+  {% block css %}{% endblock %}
+  <!-- GTM -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+  {'gtm.start': new Date().getTime(),event:'gtm.js'}
+  );var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WH3T8K2');</script>
+</head>
+<body>
+<div id="globalbar"><div id="bar_m104"><div id="global_bk"></div></div></div>
+  <div class="wrap">
+    <header id="header">
+      <h1>
+        <a class="logo104" href="https://www.104.com.tw" target="_blank"><img src="https://static.104.com.tw/logo/104logo_o_180x26_area.png" alt="104人力銀行"></a>
+        <a class="name" href="/supersales/"><img src="{{STATIC_WEB_PATH}}/img/static/frame/logo.png" alt="超級業務"></a>
+      </h1>
+      <div class="fb-share"></div>
+      <div class="ad" style="display:none;"><div id="aidma_{{aidma.elementid}}"></div></div>
+    </header>
+    <nav id="nav">
+      <a href="{{basePath}}/" class="index {% if navActive == 'index' %}active{% endif %}"></a>
+      <a href="{{basePath}}/jobs/1" {% if navActive == 'jobs' %}class="active"{% endif %}>高薪職缺</a>
+      <a href="{{basePath}}/report/{{navReport}}" {% if navActive == 'report' %}class="active"{% endif %}>超業關鍵報告</a>
+      <a href="{{basePath}}/follow" {% if navActive == 'follow' or navActive == 'article'  %}class="active"{% endif %}>跟著前輩這樣做</a>
+      <a href="{{basePath}}/show" {% if navActive == 'show' %}class="active"{% endif %}>超業Talk秀</a>
+      <div class="hover"></div>
+    </nav>
+    {% if breadCrumbs is defined %}
+    <div class="bread-crumbs">
+        <a class="path" href="/supersales/">超級業務</a>
+        {% if breadCrumbs is not empty %}
+          <span class="path">{{breadCrumbs|raw}}</span>
+        {% endif %}
+    </div>
+    {% endif %}
+    <div id="{% block containerId %}{% endblock %}" class="container">
+      {% block main %}{% endblock %}
+    </div>
+    <footer id="footer">
+      <p>104人力銀行網站由一零四資訊科技股份有限公司創設。建議瀏覽器版本為IE8.0以上。</p>
+      <p>本網站內容享有著作權，禁止侵害，違者必究。 &copy; 2001- 2017 104 Corporation All Rights Reserved</p>
+    </footer>
+  </div>
+  <script type="text/javascript" src="https://static.104.com.tw/104main/js/jquery/jquery.min.js?v=20160622"></script>
+  <script type="text/javascript" language="javascript" src="{{BUBBLE_STATIC_JS}}"></script>
+  <script type="text/javascript" src="{{STATIC_WEB_PATH}}/js/plugins/slick/slick.min.js"></script>
+  <script type="text/javascript" src="{{STATIC_WEB_PATH}}/js/frame.js?v={{STATIC_VERSION}}"></script>
+  <script type="text/javascript" src="{{STATIC_WEB_PATH}}/js/index.js?v={{STATIC_VERSION}}"></script>
+  <script language="JavaScript" src="{{AIDMA_WEB_PATH}}/js/e104aidma.php?wid={{aidma.webid}}&cid={{aidma.channelid}}"></script>
+  <script language="javascript">
+    e104aidma_show('aidma_{{aidma.elementid}}',{{aidma.webid}},{{aidma.channelid}},{{aidma.boardid}},false,true);
+    if($('#aidma_{{aidma.elementid}} :first').size() != 0){
+        $('#aidma_{{aidma.elementid}}').parent().show();
+    }
+
+    (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+  {% block js %}{% endblock %}
+  <!-- GTM --> 
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WH3T8K2" 
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+</body>
+</html>

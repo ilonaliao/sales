@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "desc": "高薪職缺推薦、業務銷售工作首選！電銷、金融理專、國內業務、不動產經紀人等，薪資漲幅高，轉職門檻低，立即應徵，開啟你的超級業務之路！",
+    "keywords": "業務、高薪、轉職、工作、職缺、超級業務、銷售技巧、電銷、金融理專、top sales、超業故事、成功、年薪百萬、國內業務、業務成功案例、職涯、104調查、薪資統計、薪資調查"
+  },
+  "banner":[
+    {
+      "imgSrc": "jobs-bn1.jpg",
+      "imgUrl": "http://www.yahoo.com"
+    },
+    {
+      "imgSrc": "jobs-bn2.jpg",
+      "imgUrl": "http://www.yahoo.com"
+    },
+    {
+      "imgSrc": "jobs-bn3.jpg",
+      "imgUrl": "http://www.yahoo.com"
+    },
+    {
+      "imgSrc": "jobs-bn4.jpg",
+      "imgUrl": "http://www.yahoo.com"
+    }
+  ],
+  "sponsor": [
+    {
+      "job": "電銷專員_台北/新竹/台南/高雄",
+      "jobUrl": "http://www.104.com.tw/jb/service/ad/TransferAddress?trnid=adn_34555",
+      "desc": "純內勤業務，不用日曬雨淋，月入5-8萬，每年15天特休(入職即有)",
+      "cust": "康健人壽",
+      "custUrl": "https://www.104.com.tw/jobbank/custjob/index.php?r=cust&j=384a436b405c3e673c423b1d1d1d1d5f2443a363189j56",
+      "exp": "不拘",
+      "area": "不拘"
+    },
+    {
+      "job": "菁英銷售顧問：平均月入8-15萬",
+      "jobUrl": "http://www.104.com.tw/jb/service/ad/TransferAddress?trnid=adn_34663",
+      "desc": "雲端產業免陌開，高獎金保底，完整職前培訓，通過考核可申請在家工作",
+      "cust": "  TutorABC",
+      "custUrl": "https://www.104.com.tw/jobbank/custjob/index.php?r=cust&j=50704326346c3e2330323c1d1d1d1d5f2443a363189j48",
+      "exp": "不限",
+      "area": "台北/新北/台中"
+    },
+    {
+      "job": "外商高薪職缺_花旗理專全台招募",
+      "jobUrl": "http://www.104.com.tw/jb/service/ad/TransferAddress/TransferCount?trnid=adn_34557",
+      "desc": "銀行界領導品牌、高底薪、高獎金、優質福利、完整訓練！全台熱情招募",
+      "cust": "  花旗（台灣）商業銀行",
+      "custUrl": "https://www.104.com.tw/jobbank/custjob/index.php?r=cust&j=393a426b3c463e6a34583a1c5254361972929295a40332e2d80j57",
+      "exp": "不拘",
+      "area": "不拘"
+    }
+  ]
+}

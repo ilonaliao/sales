@@ -1,0 +1,57 @@
+{% extends '_base.twig' %}
+
+{% block title %}超業Talk秀-104超級業務{% endblock %}
+{% block ogTitle %}超業Talk秀-104超級業務{% endblock %}
+{% block desc %}{{json.meta.desc}}{% endblock %}
+{% block ogDesc %}{{json.meta.desc}}{% endblock %}
+{% block keywords %}{{json.meta.keywords}}{% endblock %}
+{% block containerId %}show{% endblock %}
+
+{% block main %}
+    <main class="main">
+        <div class="page-tt"><img src="{{STATIC_WEB_PATH}}/img/static/show/tt.jpg" alt=""></div>
+
+        {% for lk,lv in json.lactures %}
+          <article class="lactures">
+          <img class="pic" src="{{STATIC_WEB_PATH}}/img/upload/{{lv.imgSrc}}?v={{STATIC_VERSION}}" alt="">
+          <time><strong>{{lv.dateM}}.{{lv.dateD}}</strong>{{lv.day}} {{lv.dateY}}</time>
+          <div class="con">
+            <h1>{{lv.title}}</h1> 
+            <p>{{lv.desc}}</p>
+            <address>
+              <dl class="presenter">
+                <dt>主講人：</dt>
+                <dd>{{lv.presenter}}</dd>
+              </dl>
+              <dl class="info">
+                <dt>日期：</dt>
+                <dd>2017/02/13</dd>
+              </dl>
+              <dl>
+                <dt>時間：</dt>
+                <dd>{{lv.timeStart}}~{{lv.timeEnd}}</dd>
+              </dl>
+              <dl>
+                <dt>地點：</dt>
+                <dd>{{lv.location}}</dd>
+              </dl>
+              <dl>
+                <dt>名額：</dt>
+                <dd>{{lv.limit}}</dd>
+              </dl>
+            </address>
+            <a class="button yw signup" href="{{lv.url}}">活動詳情</a>
+          </div>
+        </article>
+        {% endfor %}
+        
+        <div class="action">
+          <a class="button more bl" href="/supersales/follow">更多充電好文</a>
+          <a class="button rept yw" href="/supersales/report/{{navReport}}">超業關鍵報告</a>
+          <a class="button jobs bk" href="/supersales/jobs/1">高薪職缺推薦</a>
+        </div>
+      </main>
+{% endblock %}
+
+
+

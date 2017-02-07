@@ -1,0 +1,46 @@
+{% extends '_base.twig' %}
+
+{% block title %}104－超級業務專區{% endblock %}
+{% block ogTitle %}104－超級業務專區{% endblock %}
+{% block desc %}{{json.meta.desc}}{% endblock %}
+{% block ogDesc %}{{json.meta.desc}}{% endblock %}
+{% block containerId %}index{% endblock %}
+
+{% block main %}
+	<main class="main">
+    <div id="slider">
+      {% for sk,sv in json.slider %}
+        <a href="{{sv.imgUrl}}"><img src="{{STATIC_WEB_PATH}}/img/upload/{{sv.imgSrc}}"></a>
+      {% endfor %}
+    </div>
+    <section id="report" class="block">
+      <h2 class="hide">關鍵報告</h2>
+      <a href="{{json.report.imgUrl}}" class="bn"><img src="{{STATIC_WEB_PATH}}/img/upload/{{json.report.imgSrc}}?v={{STATIC_VERSION}}"></a>
+      <a href="{{json.report.titleUrl}}" class="con">
+        <h3>{{json.report.title}}</h3>
+        <p>{{json.report.desc}}</p>
+        <span class="more">more</span>
+      </a>
+    </section>
+    <section id="follow" class="block">
+      <h2 class="hide">前輩帶路</h2>
+      <a href="{{json.follow.imgUrl}}" class="bn"><img src="{{STATIC_WEB_PATH}}/img/upload/{{json.follow.imgSrc}}?v={{STATIC_VERSION}}"></a>
+      <ul class="con">
+        <li><a href="{{json.follow.item1.url}}">{{json.follow.item1.title}}<span class="more">more</span></a></li>
+        <li><a href="{{json.follow.item2.url}}">{{json.follow.item2.title}}<span class="more">more</span></a></li>
+        <li><a href="{{json.follow.item3.url}}">{{json.follow.item3.title}}<span class="more">more</span></a></li>
+      </ul>
+    </section>
+    <section id="jobs" class="block">
+      <h2 class="hide">高薪推薦</h2>
+      <a href="{{json.jobs.imgUrl}}" class="bn"><img src="{{STATIC_WEB_PATH}}/img/upload/{{json.jobs.imgSrc}}?v={{STATIC_VERSION}}"></a>
+      <ul class="con">
+        <li><a href="{{json.jobs.item1.url}}"><mark>房仲</mark><span class="txt">{{json.jobs.item1.title}}</span><span class="more">more</span></a></li>
+        <li><a href="{{json.jobs.item2.url}}"><mark>電銷</mark><span class="txt">{{json.jobs.item2.title}}</span><span class="more">more</span></a></li>
+        <li><a href="{{json.jobs.item3.url}}"><mark>理專</mark><span class="txt">{{json.jobs.item3.title}}</span><span class="more">more</span></a></li>
+        <li><a href="{{json.jobs.item4.url}}"><mark>國內</mark><span class="txt">{{json.jobs.item4.title}}</span><span class="more">more</span></a></li>
+      </ul>
+    </section>
+  </main>
+
+{% endblock %}

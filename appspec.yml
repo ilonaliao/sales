@@ -1,0 +1,16 @@
+version: 0.0
+os: linux
+files:
+  - source: supersales
+    destination: /var/www/html/supersales
+hooks:
+  ApplicationStop:
+    - location: Scripts/Appstop_ubuntu.sh
+      timeout: 300
+      runas: root
+  BeforeInstall:
+    - location: Scripts/EraseApp.sh
+      timeout: 300
+  ApplicationStart:
+    - location: Scripts/Appstart_ubuntu.sh
+      timeout: 300

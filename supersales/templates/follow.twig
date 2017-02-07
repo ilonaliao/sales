@@ -1,0 +1,95 @@
+{% extends '_base.twig' %}
+
+{% block title %}跟著前輩這樣做-104超級業務{% endblock %}
+{% block ogTitle %}跟著前輩這樣做-104超級業務{% endblock %}
+{% block desc %}{{json.meta.desc}}{% endblock %}
+{% block ogDesc %}{{json.meta.desc}}{% endblock %}
+{% block keywords %}{{json.meta.keywords}}{% endblock %}
+{% block containerId %}follow{% endblock %}
+
+{% block main %}
+  <div class="banners">
+        <div class="page-tt"><img src="{{STATIC_WEB_PATH}}/img/static/follow/tt.jpg" alt=""></div>
+        <div class="masonry">
+          <figcaption class="itm bottom-txt">
+            <a href="{{json.masonry.item1.url}}">
+              <img src="{{STATIC_WEB_PATH}}/img/upload/{{json.masonry.item1.imgSrc}}">
+              <figure><strong>{{json.masonry.item1.title}}</strong><span>{{json.masonry.item1.desc}}</span></figure>
+            </a>
+          </figcaption>
+          <figcaption class="itm left-txt">
+            <a href="{{json.masonry.item2.url}}">
+              <img src="{{STATIC_WEB_PATH}}/img/upload/{{json.masonry.item2.imgSrc}}">
+              <figure><strong>{{json.masonry.item2.title}}</strong><span>{{json.masonry.item2.desc}}</span></figure>
+            </a>
+          </figcaption>
+          <figcaption class="itm right-txt">
+            <a href="{{json.masonry.item3.url}}">
+              <img src="{{STATIC_WEB_PATH}}/img/upload/{{json.masonry.item3.imgSrc}}">
+              <figure><strong>{{json.masonry.item3.title}}</strong><span>{{json.masonry.item3.desc}}</span></figure>
+            </a>
+          </figcaption>
+        </div>
+    </div>
+
+    <main class="main">
+        <section id="senior">
+          <h1 class="tt">前輩帶路</h1>
+          {% if json.senior.item1 is not empty %}
+          <article class="itm">
+            <a href="{{basePath}}/follow/1" class="pic"><img src="{{STATIC_WEB_PATH}}/img/upload/{{json.senior.item1.imgSrc}}" alt=""></a>
+            <time>{{json.senior.item1.date}}</time>
+            <h1><a href="{{basePath}}/follow/1">{{json.senior.item1.title}}</a></h1>
+            <p>{{json.senior.item1.desc}}</p>
+          </article>
+          {% endif %}
+          {% if json.senior.item2 is not empty %}
+          <article class="itm">
+            <a href="{{basePath}}/follow/2" class="pic"><img src="{{STATIC_WEB_PATH}}/img/upload/{{json.senior.item2.imgSrc}}" alt=""></a>
+            <time>{{json.senior.item2.date}}</time>
+            <h1><a href="{{basePath}}/follow/2">{{json.senior.item2.title}}</a></h1>
+            <p>{{json.senior.item2.desc}}</p>
+          </article>
+          {% endif %}
+          {% if json.senior.item3 is not empty %}
+          <article class="itm">
+            <a href="{{basePath}}/follow/3" class="pic"><img src="{{STATIC_WEB_PATH}}/img/upload/{{json.senior.item3.imgSrc}}" alt=""></a>
+            <time{{json.senior.item3.date}}</time>
+            <h1><a href="{{basePath}}/follow/3">{{json.senior.item3.title}}</a></h1>
+            <p>{{json.senior.item3.desc}}</p>
+          </article>
+          {% endif %}
+          {% if json.senior.item4 is not empty %}
+          <article class="itm">
+            <a href="{{basePath}}/follow/4" class="pic"><img src="{{STATIC_WEB_PATH}}/img/upload/{{json.senior.item4.imgSrc}}" alt=""></a>
+            <time>{{json.senior.item4.date}}</time>
+            <h1><a href="{{basePath}}/follow/4">{{json.senior.item4.title}}</a></h1>
+            <p>{{json.senior.item4.desc}}</p>
+          </article>
+          {% endif %}
+        </section>
+
+        <section id="junior">
+          <h1 class="tt">新手練功</h1>
+          <div class="con">
+            {% for kk,vv in json.junior %}
+            <article class="itm">
+              <a target="_blank" href="{{vv.url}}" class="pic"><img src="{{STATIC_WEB_PATH}}/img/upload/{{vv.imgSrc}}"></a>
+              <h1><a target="_blank" href="{{vv.url}}">{{vv.title}}</a></h1>
+              <p>{{vv.desc}}</p>
+            </article>
+            {% endfor %}
+          </div>
+          <div class="page-frg">
+            <div class="page-ctrl">
+            </div>
+          </div>
+        </section>
+      </main>
+{% endblock %}
+
+{%block js %}
+  <script type="text/javascript" src="{{STATIC_WEB_PATH}}/js/follow.js?v={{STATIC_VERSION}}"></script>
+{% endblock %}
+
+

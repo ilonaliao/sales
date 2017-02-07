@@ -1,0 +1,152 @@
+{% extends '_base.twig' %}
+
+{% block title %}高薪職缺推薦-104超級業務{% endblock %}
+{% block ogTitle %}高薪職缺推薦-104超級業務{% endblock %}
+{% block desc %}{{json.meta.desc}}{% endblock %}
+{% block ogDesc %}{{json.meta.desc}}{% endblock %}
+{% block keywords %}{{json.meta.keywords}}{% endblock %}
+{% block containerId %}jobs{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="//www.104.com.tw/public/function01/menu/css/category_org.css">
+{% endblock %}
+
+{% block main %}
+      <main class="main">
+        <img class="bn" src="{{STATIC_WEB_PATH}}/img/upload/{{json.banner.imgSrc}}" alt=""> 
+        <div class="search">
+
+          <form id="srerch-form">
+            <input type="text" placeholder="請輸入關鍵字" class="keyword" name="keyword">
+            <div id="fill-industry" class="selector" data-placeholder="產業">
+              <span class="opts placeholder">產業</span>
+            </div>
+            <div id="fill-city" class="selector" data-placeholder="地區">
+              <span class="opts placeholder">地區</span>
+            </div>
+            <input type="hidden" class="indcat" name="indcat" id="indcat">
+            <input type="hidden" class="area" name="area" id="area">
+            <button type="submit" class="button yw send">查詢</button>
+          </form>
+
+        </div>
+        <table class="list">
+            <tbody><tr>
+            	<th class="sav">儲存</th>
+            	<th class="tnm">職務名稱</th>
+            	<th class="cnm">公司名稱</th>
+            	<th class="exp">經歷</th>
+            	<th class="loc">地區</th>
+            </tr>
+            {% if json.sponsor is not empty %}
+            <tr class="ad">
+              <td class="sav cn">贊助</td>
+              <td class="tnm">
+                <a href="{{json.sponsor.jobUrl}}" target="_blank">{{json.sponsor.job}}</a>
+                <span class="txt">{{json.sponsor.desc}}</span>
+              </td>
+              <td class="cnm"><a href="{{json.sponsor.custUrl}}" target="_blank">{{json.sponsor.cust}}</a></td>
+              <td class="exp cn">{{json.sponsor.exp}}</td>
+              <td class="loc cn">{{json.sponsor.area}}</td>
+            </tr>
+            {% endif %}
+      {% for jk,jv in joblist.list %}
+	       <tr>
+          <td class="sav cn">
+            <img class="loading" src="{{STATIC_WEB_PATH}}/img/static/jobs/loading.gif" style="display:none;">
+            <button type="button" class="save" title="儲存" data-jno="{{jv.enJ}}" data-cno="{{jv.enCC}}"></button>
+          </td>
+          <td class="tnm"><a href="{{jv.jobUrl}}" target="_blank">{{jv.jobName|raw}}</a></td>
+          <td class="cnm"><a href="{{jv.custUrl}}" target="_blank">{{jv.custName}}</a></td>
+          <td class="exp cn">{{jv.expRequireDesc}}</td>
+          <td class="loc cn">{{jv.areacatDesc}}</td>
+        </tr>
+			{% endfor %}
+
+        </tbody></table>
+
+        <!-- page start -->
+		{% set pageQueryString = combine_queryarray(array_unset(queryString, 'page')) %}
+        {% if joblist.totalPage > 1 %}
+	        <div class="page-frg">
+	          <div class="page-ctrl">
+
+	          	{% if (joblist.page - 1) > 0 %}
+		          	{% set pagePrev = joblist.page - 1 %}
+		        {% else %}
+		        	{% set pagePrev = 0 %}
+		        {% endif %}
+
+		        {% if (joblist.page + 1) > joblist.totalPage %}
+		         	{% set pageNext = 0 %}
+		        {% else %}
+		        	{% set pageNext = joblist.page + 1 %}
+		        	
+		        {% endif %}
+	          	<a {% if pagePrev != 0 %}href="?{{pageQueryString}}&page={{pagePrev}}"{% endif %} class="page-prev{% if joblist.page == "1" %} disabled{% endif %}">上一頁</a>
+
+	          	{% if joblist.totalPage <= 5%}
+				    {% for i in range(1, joblist.totalPage) %}
+				    	{% if joblist.page != i %}
+				    		<a href="?{{pageQueryString}}&page={{i}}" class="page-num">{{i}}</a>
+				    	{% else %}
+				    		<a class="page-num active">{{i}}</a>
+				    	{% endif %}
+					{% endfor %}
+				{% else %}
+				    {% if (joblist.page + 4) < joblist.totalPage  %}
+				    	{% for i in range(joblist.page, joblist.page+4) %}
+							{% if joblist.page != i %}
+				    			<a href="?{{pageQueryString}}&page={{i}}" class="page-num">{{i}}</a>
+				    		{% else %}
+				    			<a class="page-num active">{{i}}</a>
+				    		{% endif %}
+						{% endfor %}
+						<span class="page-ellipsis">...</span>
+					{% else %}
+						<span class="page-ellipsis">...</span>
+						{% for i in range(joblist.totalPage-4, joblist.totalPage) %}
+							{% if joblist.page != i %}
+					    		<a href="?{{pageQueryString}}&page={{i}}" class="page-num">{{i}}</a>
+					    	{% else %}
+					    		<a class="page-num active">{{i}}</a>
+					    	{% endif %}
+						{% endfor %}
+				    {% endif %}
+				{% endif %}
+				
+				<a {% if pageNext != 0 %}href="?{{pageQueryString}}&page={{pageNext}}"{% endif %} class="page-next{% if joblist.page == joblist.totalPage %} disabled{% endif %}">下一頁</a>
+
+	          </div>
+	          <div class="page-total">共 {{joblist.totalPage}} 頁</div>
+	        </div>
+        {% endif %}
+        <!-- pager end -->
+
+      </main>
+      <aside class="aside">
+        <div class="page-tt"><img src="{{STATIC_WEB_PATH}}/img/static/jobs/tt.jpg" alt="高薪職缺"></div><ul class="types">
+          <li class="bl"><a href="{{basePath}}/jobs/1" {% if type == 1 %}class="active"{% endif %}>{{asideText.0}}</a></li>
+          <li class="bw"><a href="{{basePath}}/jobs/2" {% if type == 2 %}class="active"{% endif %}>{{asideText.1}}</a></li>
+          <li class="yw"><a href="{{basePath}}/jobs/3" {% if type == 3 %}class="active"{% endif %}>{{asideText.2}}</a></li>
+          <li class="gn"><a href="{{basePath}}/jobs/4" {% if type == 4 %}class="active"{% endif %}>{{asideText.3}}</a></li>
+        </ul>
+      </aside>
+      <div id="divorg"></div>
+{% endblock %}
+
+{%block js %}
+  <script type="text/javascript">
+   var nowUrl = "{{WEB_PATH}}{{basePath}}/jobs/{{type}}";
+   var loginUrl = "{{LOGIN_WEB_PATH}}";
+  </script>
+  <script type="text/javascript" src="https://www.104.com.tw/public/function01/menu/js/e104menu2011.js?v=20160622"></script>
+  <script type="text/javascript" src="https://www.104.com.tw/public/function01/utf8/jsonIndust.js"></script>
+  <script type="text/javascript" src="https://www.104.com.tw/public/function01/utf8/jsonArea.js"></script>
+
+  <script type="text/javascript" src="{{STATIC_WEB_PATH}}/js/jobs.js?v={{STATIC_VERSION}}"></script> 
+ 
+{% endblock %}
+
+
+

@@ -1,0 +1,72 @@
+{% extends '_base.twig' %}
+
+{% block title %}超業關鍵報告-104超級業務{% endblock %}
+{% block ogTitle %}超業關鍵報告-104超級業務{% endblock %}
+{% block desc %}{{json.meta.desc}}{% endblock %}
+{% block ogDesc %}{{json.meta.desc}}{% endblock %}
+{% block keywords %}{{json.meta.keywords}}{% endblock %}
+{% block containerId %}report{% endblock %}
+
+{% block main %}
+    <div class="page-tt"><img src="{{STATIC_WEB_PATH}}/img/static/report/tt.jpg" alt="超業關鍵報告"></div>
+    <main class="main">
+        <h1 class="title">
+          <mark>{{type}}月號</mark>
+          <span>{{json.main.title}}</span>
+        </h1>
+        <div class="fb-share-button" data-href="{{uri}}" data-layout="button" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{uri}}">分享</a></div>
+        <img src="{{STATIC_WEB_PATH}}/img/upload/{{json.main.imgSrc}}" class="kv">
+        <div class="con">
+          <div class="left">
+            <div class="info">
+              <address>作者：{{json.main.author}}</address>
+              <time>{{json.main.date}}</time>
+            </div>
+            {% for ck,cv in json.main.con %}
+              {% if cv.title is not null %}<h2>{{cv.title}}</h2>{% endif %}
+              {% if cv.desc is not null %}<p>{{cv.desc}}</p>{% endif %}
+            {% endfor %}
+          </div>
+          <div class="albums">
+            <ol>
+              {% for ik,iv in json.main.images %}
+              <li>
+                <a class="itm" href="{{STATIC_WEB_PATH}}/img/upload/{{iv.origin}}">
+                  <img src="{{STATIC_WEB_PATH}}/img/upload/{{iv.thumbnail}}">
+                </a>
+              </li>
+              {% endfor %}
+            </ol>
+          </div>
+          <div class="action">
+              <a class="button more bl" href="/supersales/follow">更多充電好文</a>
+              <a class="button acps yw" href="/supersales/show">超業前輩親自教授</a>
+              <a class="button jobs bk" href="/supersales/jobs/1">高薪職缺推薦</a>
+          </div>
+        </div>
+      </main>
+      <aside class="aside">
+        <div class="bn"><a href="{{json.aside.imgUrl}}"><img src="{{STATIC_WEB_PATH}}/img/upload/{{json.aside.imgSrc}}" alt=""></a></div>
+        <div class="other">
+          <h1>文章推薦</h1>
+
+            {% for lk,lv in json.aside.list %}
+              <article class="itm">
+                <a href="{{lv.url}}">
+                  <img src="{{STATIC_WEB_PATH}}/img/upload/{{lv.imgSrc}}">
+                  <h2>{{lv.title}}</h2>
+                  <p>{{lv.desc}}</p>
+                </a>
+              </article>
+            {% endfor %}
+        </div>
+      </aside>
+      <div class="lightbox-scene" style="display:none;"></div>
+{% endblock %}
+
+
+{% block js %}
+  <script type="text/javascript" src="{{STATIC_WEB_PATH}}/js/report.js"></script>
+{% endblock %}
+
+
